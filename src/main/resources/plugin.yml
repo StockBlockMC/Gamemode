@@ -1,0 +1,66 @@
+name: Gamemode
+version: ${project.version}
+main: uk.co.hopperelec.mc.gamemode.Main
+api-version: 1.16
+prefix: Gamemode
+authors: [ HopperElecYT ]
+description: Good gamemode plugin cos Essentials bad
+website: hopperelec.co.uk
+
+commands:
+  gamemode:
+    description: Core command
+    aliases:
+      - gm
+    usage: /gamemode [(gamemode) | (player) | (gamemode) (player) | (player) (gamemode)]
+
+permissions:
+  gamemode.self.survival:
+    description: Allows putting self into survival
+    default: op
+  gamemode.self.creative:
+    description: Allows putting self into creative
+    default: op
+  gamemode.self.spectator:
+    description: Allows putting self into spectator
+    default: op
+  gamemode.self.adventure:
+    description: Allows putting self into adventure
+    default: op
+  gamemode.self:
+    description: Allows changing own gamemode
+    default: op
+    children:
+      gamemode.self.survival: true
+      gamemode.self.creative: true
+      gamemode.self.spectator: true
+      gamemode.self.adventure: true
+  gamemode.others.survival:
+    description: Allows putting other players into survival
+    default: op
+  gamemode.others.creative:
+    description: Allows putting other players into creative
+    default: op
+  gamemode.others.spectator:
+    description: Allows putting other players into spectator
+    default: op
+  gamemode.others.adventure:
+    description: Allows putting other players into adventure
+    default: op
+  gamemode.others:
+    description: Allows changing other players\' gamemode
+    default: op
+    children:
+      gamemode.self.survival: true
+      gamemode.self.creative: true
+      gamemode.self.spectator: true
+      gamemode.self.adventure: true
+  gamemode.view:
+    description: Allows the viewing of other players\' gamemode
+  gamemode:
+    description: Wildcard permission
+    default: op
+    children:
+      gamemode.self: true
+      gamemode.others: true
+      gamemode.view: true
