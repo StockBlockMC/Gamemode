@@ -1,11 +1,10 @@
-name: Gamemode
+name: ${project.name}
 version: ${project.version}
-main: uk.co.hopperelec.mc.gamemode.Main
+main: uk.co.hopperelec.mc.gamemode.GamemodePlugin
 api-version: 1.16
 prefix: Gamemode
-authors: [ HopperElecYT ]
-description: Good gamemode plugin cos Essentials bad
-website: hopperelec.co.uk
+authors: [ hopperelec ]
+description: ${project.description}
 
 commands:
   gamemode:

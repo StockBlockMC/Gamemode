@@ -10,13 +10,22 @@
     <packaging>jar</packaging>
 
     <name>Gamemode</name>
+    <description>Simple gamemode plugin similar to EssentialsEx</description>
+    <developers>
+        <developer>
+            <id>hopperelec</id>
+            <name>Cameron Johnston</name>
+            <email>hopperelec@gmail.com</email>
+            <url>https:///www.hopperelec.co.uk/</url>
+            <timezone>Europe/London</timezone>
+        </developer>
+    </developers>
 
-    <description>Good gamemode plugin cos Essentials bad</description>
     <properties>
-        <java.version>16</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>hopperelec.co.uk</url>
 
     <build>
         <plugins>
@@ -24,10 +33,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <source>16</source>
-                    <target>16</target>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
@@ -43,18 +48,20 @@
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <version>1.19.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>21.0.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
