@@ -37,23 +37,31 @@ permissions:
   gamemode.others.survival:
     description: Allows putting other players into survival
     default: op
+    children:
+      gamemode.self.survival: true
   gamemode.others.creative:
     description: Allows putting other players into creative
     default: op
+    children:
+      gamemode.self.creative: true
   gamemode.others.spectator:
     description: Allows putting other players into spectator
     default: op
+    children:
+      gamemode.self.spectator: true
   gamemode.others.adventure:
     description: Allows putting other players into adventure
     default: op
+    children:
+      gamemode.self.adventure: true
   gamemode.others:
     description: Allows changing other players\' gamemode
     default: op
     children:
-      gamemode.self.survival: true
-      gamemode.self.creative: true
-      gamemode.self.spectator: true
-      gamemode.self.adventure: true
+      gamemode.others.survival: true
+      gamemode.others.creative: true
+      gamemode.others.spectator: true
+      gamemode.others.adventure: true
   gamemode.view:
     description: Allows the viewing of other players\' gamemode
   gamemode:
