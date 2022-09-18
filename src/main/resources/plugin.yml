@@ -1,7 +1,6 @@
 name: ${project.name}
 version: ${project.version}
 main: uk.co.hopperelec.mc.gamemode.GamemodePlugin
-api-version: 1.16
 prefix: Gamemode
 authors: [ hopperelec ]
 description: ${project.description}
