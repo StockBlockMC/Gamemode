@@ -13,7 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class GamemodePlugin extends JavaPlugin {
-    @NotNull final List<String> gamemodes = Arrays.stream(GameMode.values()).map(Enum::name).toList();
+    @NotNull
+    final List<String> gamemodes = Arrays.stream(GameMode.values()).map(Enum::name).toList();
 
     @NotNull
     private String setOwnGamemode(@NotNull CommandSender author, @NotNull GameMode gamemode) {
@@ -75,41 +76,33 @@ public final class GamemodePlugin extends JavaPlugin {
     
     @NotNull
     private String messageForCommand(@NotNull CommandSender author, @NotNull String[] args) {
-        if (args.length == 0) {
-            return viewOwnGamemode(author);
-        } else if (args.length == 1) {
+        if (args.length == 0) return viewOwnGamemode(author);
+        if (args.length == 1) {
             final GameMode gamemode = parseGamemode(args[0]);
-            if (gamemode == null) {
-                return viewOthersGamemode(author,args[0]);
-            }
-            return setOwnGamemode(author,gamemode);
-        } else if (args.length == 2) {
+            if (gamemode == null) return viewOthersGamemode(author, args[0]);
+            return setOwnGamemode(author, gamemode);
+        }
+        if (args.length == 2) {
             GameMode gamemode = parseGamemode(args[0]);
             final String playername;
             if (gamemode == null) {
                 gamemode = parseGamemode(args[1]);
-                if (gamemode == null) {
-                    return "Unknown gamemode";
-                }
+                if (gamemode == null) return "Unknown gamemode";
                 playername = args[1];
             } else {
                 playername = args[0];
             }
             final Player player = Bukkit.getPlayer(playername);
-            if (player == null) {
-                return "Unknown player '"+playername+"'";
-            }
-            if (player == author) {
-                return setOwnGamemode(author,gamemode);
-            }
-            return setOthersGamemode(author,player,gamemode);
+            if (player == null) return "Unknown player '"+playername+"'";
+            if (player == author) return setOwnGamemode(author, gamemode);
+            return setOthersGamemode(author, player, gamemode);
         }
         return "Too many arguments, up to 2 expected!";
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        sender.sendMessage(messageForCommand(sender,args));
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        sender.sendMessage(messageForCommand(sender, args));
         return true;
     }
 }
